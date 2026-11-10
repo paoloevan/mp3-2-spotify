@@ -186,6 +186,13 @@ This project is open-source and intended strictly for **personal and educational
 
 ---
 
+## 🙏 Acknowledgments
+
+* Special thanks to [**@frammenti**](https://github.com/frammenti) (Francesca Massarenti) for creating [**raiplaysoundrss**](https://github.com/frammenti/raiplaysoundrss), which makes it effortless to subscribe to radio shows via standard podcast RSS feeds and directly inspired this workflow.
+* Powered by [**shazamio**](https://github.com/shazamio/ShazamIO), [**Spotipy**](https://github.com/spotipy-dev/spotipy), and [**FFmpeg**](https://ffmpeg.org/).
+
+---
+
 ## 📄 License
 
 Released under the [MIT License](LICENSE).
