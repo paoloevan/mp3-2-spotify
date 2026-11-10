@@ -1,0 +1,4 @@
+shazamio>=0.8.0
+aiohttp-retry>=2.8.3
+spotipy>=2.24.0
+python-dotenv>=1.0.0
