@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-podcast-2-spotify:
-Automatically identify songs inside podcast episodes, radio shows, or DJ mixes
+mp3-2-spotify:
+Automatically identify songs inside long MP3/MP4 files, podcast episodes, radio shows, or DJ mixes
 using adaptive audio fingerprinting (Shazam) and sync them to Spotify playlists.
 """
 
@@ -267,14 +267,14 @@ def resolve_or_create_playlist(sp: spotipy.Spotify, user_id: str, target_playlis
             playlist = sp.current_user_playlist_create(
                 name=target_playlist,
                 public=is_public,
-                description="Created by podcast-2-spotify"
+                description="Created by mp3-2-spotify"
             )
         except Exception:
             playlist = sp.user_playlist_create(
                 user=user_id,
                 name=target_playlist,
                 public=is_public,
-                description="Created by podcast-2-spotify"
+                description="Created by mp3-2-spotify"
             )
         playlist_id = playlist["id"]
         playlist_name = playlist["name"]

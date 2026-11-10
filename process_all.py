@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Batch Processor for podcast-2-spotify:
+Batch Processor for mp3-2-spotify:
 1. (Optional) Downloads new podcast episodes from an RSS feed URL into AUDIO_DIR.
 2. Automatically converts .mp4/.m4a files to compressed .mp3 and removes originals.
 3. Scans all unprocessed episodes (those without a .tracks.json file) and syncs to Spotify.
@@ -31,7 +31,7 @@ def download_from_rss(rss_url: str, folder: Path, max_episodes: int = 5):
 
     print(f"🌐 Checking RSS feed: {rss_url}")
     try:
-        req = urllib.request.Request(rss_url, headers={"User-Agent": "podcast-2-spotify/1.0"})
+        req = urllib.request.Request(rss_url, headers={"User-Agent": "mp3-2-spotify/1.0"})
         with urllib.request.urlopen(req, timeout=30) as resp:
             xml_data = resp.read()
         root = ET.fromstring(xml_data)
@@ -135,7 +135,7 @@ def main():
     print(f"Found {len(pending)} episode(s) to process:\n" + "\n".join(f"- {p.name}" for p in pending))
     print("=" * 60 + "\n")
 
-    script_path = Path(__file__).resolve().parent / "podcast2spotify.py"
+    script_path = Path(__file__).resolve().parent / "mp3_to_spotify.py"
 
     for idx, media_path in enumerate(pending, start=1):
         print(f"\n[{idx}/{len(pending)}] PROCESSING: {media_path.name}")

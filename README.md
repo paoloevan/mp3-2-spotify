@@ -1,8 +1,8 @@
-# 📻🎧 podcast-2-spotify
+# 📻🎧 mp3-2-spotify
 
-Automatically extract, recognize, and sync music tracks from long-form **podcast episodes**, **radio shows**, or **DJ mixes** directly into your **Spotify playlists** — at **zero cost ($0)**.
+Automatically extract, recognize, and sync music tracks from long-form **MP3 / MP4 audio files**, **podcast episodes**, **radio shows**, or **DJ mixes** directly into your **Spotify playlists** — at **zero cost ($0)**.
 
-Built around an **Adaptive Audio Scanner** powered by **FFmpeg**, **Shazam (`shazamio`)**, and the **Spotify Web API (`spotipy`)**, `podcast-2-spotify` handles host voiceovers, talk segments, rate-limits, and duplicate prevention out of the box.
+Built around an **Adaptive Audio Scanner** powered by **FFmpeg**, **Shazam (`shazamio`)**, and the **Spotify Web API (`spotipy`)**, `mp3-2-spotify` handles host voiceovers, talk segments, rate-limits, and duplicate prevention out of the box.
 
 ---
 
@@ -64,8 +64,8 @@ flowchart LR
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/paoloevan/podcast-2-spotify.git
-cd podcast-2-spotify
+git clone https://github.com/paoloevan/mp3-2-spotify.git
+cd mp3-2-spotify
 ```
 
 ### 2. Create a Python virtual environment & install dependencies
@@ -78,7 +78,7 @@ pip install -r requirements.txt
 ### 3. Create your Spotify Developer credentials
 1. Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and log in.
 2. Click **Create app**:
-   * **App name**: `podcast-2-spotify`
+   * **App name**: `mp3-2-spotify`
    * **Redirect URI**: `http://127.0.0.1:8501`
    * Check **Web API** and save.
 3. Open your app's **Settings** and copy the **Client ID** and **Client Secret**.
@@ -132,40 +132,40 @@ Run `process_all.py` to automatically:
 
 ### 2. Scan the newest episode in `AUDIO_DIR` and sync to Spotify
 ```bash
-./venv/bin/python podcast2spotify.py --spotify
+./venv/bin/python mp3_to_spotify.py --spotify
 ```
 
 ### 3. Scan a specific audio file
 ```bash
-./venv/bin/python podcast2spotify.py "/path/to/episode.mp3" --spotify
+./venv/bin/python mp3_to_spotify.py "/path/to/episode.mp3" --spotify
 ```
 
 ### 4. Override target playlist or dated playlist behavior via CLI
 ```bash
 # Sync to a custom cumulative playlist name or URL
-./venv/bin/python podcast2spotify.py --spotify --playlist "My Radio Discoveries"
+./venv/bin/python mp3_to_spotify.py --spotify --playlist "My Radio Discoveries"
 
 # Sync only to the main playlist without creating a dated episode playlist
-./venv/bin/python podcast2spotify.py --spotify --no-dated-playlist
+./venv/bin/python mp3_to_spotify.py --spotify --no-dated-playlist
 ```
 
 ### 5. Extract tracklist only (JSON + console output, no Spotify sync)
 ```bash
-./venv/bin/python podcast2spotify.py "/path/to/episode.mp3"
+./venv/bin/python mp3_to_spotify.py "/path/to/episode.mp3"
 ```
 This generates `/path/to/episode.tracks.json` containing timestamps, artist, title, Shazam URL, and Spotify URI metadata.
 
 ### 6. Sync to Spotify from an existing `.tracks.json` file
 If you already scanned an episode and want to push its `.tracks.json` to Spotify without re-scanning the audio:
 ```bash
-./venv/bin/python podcast2spotify.py --from-json "/path/to/episode.tracks.json"
+./venv/bin/python mp3_to_spotify.py --from-json "/path/to/episode.tracks.json"
 ```
 
 ---
 
 ## 🔌 Integrating with Podcast Clients or RSS Bridges
 
-You can feed `podcast-2-spotify` in two ways:
+You can feed `mp3-2-spotify` in two ways:
 
 1. **Desktop Podcast Client (e.g., Rhythmbox, gPodder)**:
    * Subscribe to your favorite music podcast or radio show RSS feed in your podcast client.
