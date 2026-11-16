@@ -262,19 +262,20 @@ def resolve_or_create_playlist(sp: spotipy.Spotify, user_id: str, target_playlis
                 break
 
     if not playlist_id:
+        date_str = datetime.now().strftime("%Y-%m-%d")
         print(f"✨ Playlist '{target_playlist}' not found. Creating it...")
         try:
             playlist = sp.current_user_playlist_create(
                 name=target_playlist,
                 public=is_public,
-                description="Created by mp3-2-spotify"
+                description=date_str
             )
         except Exception:
             playlist = sp.user_playlist_create(
                 user=user_id,
                 name=target_playlist,
                 public=is_public,
-                description="Created by mp3-2-spotify"
+                description=date_str
             )
         playlist_id = playlist["id"]
         playlist_name = playlist["name"]
@@ -364,7 +365,7 @@ def sync_tracks_to_spotify(
     if create_dated_playlist and episode_uris:
         date_str = datetime.now().strftime("%Y-%m-%d")
         dated_playlist_name = f"{dated_prefix} {date_str}".strip()
-        desc = f"Episode tracklist ({episode_name})" if episode_name else f"Episode tracklist ({date_str})"
+        desc = date_str
         print(f"\n✨ Creating dedicated episode playlist: '{dated_playlist_name}'...")
         try:
             dated_pl = sp.current_user_playlist_create(
